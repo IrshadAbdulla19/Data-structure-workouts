@@ -1,0 +1,39 @@
+package treeDataStructure;
+
+public class BinarySearchTree {
+	class TreeNode{
+		int data;
+		TreeNode left,right;
+		public TreeNode(int data) {
+			this.data=data;
+		}
+	}
+	TreeNode root;
+	public void Insert(int data) {
+		TreeNode basenode=root;
+		if(root==null) {
+			root=new TreeNode(data);
+		}
+		while(true) {
+			if(data<basenode.data) {
+				if(basenode.left==null) {
+					basenode.left=new TreeNode(data);
+					break;
+				}else {
+					basenode=basenode.left;
+				}
+			}else {
+				if(basenode.right==null) {
+					basenode.right=new TreeNode(data);
+					break;
+				}else {
+					basenode=basenode.right;
+				}
+			}
+		}
+	}
+	public void contains() {
+		
+	}
+
+}

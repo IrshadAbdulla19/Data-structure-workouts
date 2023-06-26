@@ -1,0 +1,5 @@
+package triesDataStructure;
+
+public abstract class Trie {
+
+}

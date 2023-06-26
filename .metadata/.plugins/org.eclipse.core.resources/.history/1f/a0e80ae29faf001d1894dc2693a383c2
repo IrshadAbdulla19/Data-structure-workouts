@@ -1,0 +1,19 @@
+package graphDataStracture;
+
+import java.util.LinkedList;
+
+public class LinkGraph {
+	private LinkedList<Integer>[] ad;
+	private int E;
+	private int V;
+	
+	public LinkGraph(int node) {
+		this.V=node;
+		this.E=0;
+		this.ad=new linkedlist[];
+		for(int i=0;i<V;i++) {
+		ad[i=new LinkedList<>();
+		}
+	}
+
+}

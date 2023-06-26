@@ -1,0 +1,54 @@
+package triesDataStructure;
+
+import java.util.HashMap;
+
+public class TrieNew {
+	class TrieNode{
+		HashMap<Character, TrieNode> children=new HashMap<>();
+		
+	}
+	TrieNode root=new TrieNode();
+	char endsym='*';
+	
+	public TrieNew(String str) {
+		popsufixTri(str);
+	}
+
+	public void popsufixTri(String str) {
+		for(int i=0;i<str.length();i++) {
+			insertSubStr(i,str);
+		}
+		
+	}
+
+	public void insertSubStr(int Idx, String str) {
+		TrieNode node=root;
+		for(int i=Idx;i<str.length();i++) {
+			char letter=str.charAt(i);
+			if(!node.children.containsKey(letter)) {
+				TrieNode newNode=new TrieNode();
+				node.children.put(letter, newNode);
+			}
+				node=node.children.get(letter);
+		}
+		node.children.put(endsym, null);
+		
+	}
+	public boolean contains(String str) {
+		TrieNode node=root;
+		for(int i=0;i<str.length();i++) {
+			char letter=str.charAt(i);
+			if(!node.children.containsKey(letter)) {
+				return false;
+			}
+			node=node.children.get(letter);
+		}
+		return node.children.containsKey(endsym);
+		
+	}
+	public static void main(String[] args) {
+		TrieNew trie=new TrieNew("irsshaad");
+		System.out.println(trie.contains("irs"));
+	}
+
+}

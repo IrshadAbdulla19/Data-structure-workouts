@@ -1,0 +1,46 @@
+package graphDataStracture;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Graph {
+	private Map<Integer, List<Integer>>map=new HashMap<>();
+	
+	public void insertVertex(Integer data) {
+		map.put(data,new ArrayList<>());
+	}
+	
+	public void insert(Integer vertex,Integer edge,boolean isBidiractional) {
+		if(!map.containsKey(vertex)) {
+			insertVertex(vertex);
+		}
+		if(!map.containsKey(edge)) {
+			insertVertex(edge);
+		}
+		map.get(vertex).add(edge);
+		if(isBidiractional) {
+			map.get(edge).add(vertex);
+		}
+	}
+	public void display() {
+		for(Integer x:map.keySet()) {
+			System.out.print(x+"  :");
+			for(Integer y:map.get(x)) {
+				System.out.print(y+" ");
+			}
+			System.out.println();
+		}
+	}
+	public static void main(String[] args) {
+		Graph g=new Graph();
+		g.insert(5, 4, false);
+		g.insert(5, 3, false);
+		g.insert(2, 7, true);
+		g.insert(2, 4, true);
+		g.insert(7, 10, false);
+		g.display();
+	}
+
+}
